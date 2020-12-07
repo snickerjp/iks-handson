@@ -12,8 +12,7 @@ Lab1〜3ではWebサイトのゲストブック機能を提供するシンプル
    実行例:
 
    ```bash
-   $ kubectl run guestbook --image=ibmcom/guestbook:v1
-   kubectl run --generator=deployment/apps.v1beta1 is DEPRECATED and will be removed in a future version. Use kubectl create instead.
+   $ kubectl create deployment guestbook --image=ibmcom/guestbook:v1
    deployment.apps/guestbook created
    ```
 
