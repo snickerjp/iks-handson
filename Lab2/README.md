@@ -7,7 +7,7 @@ Lab2を実施するには，`guestbook` アプリケーションのDeploymentお
 実行例:
 
 ```bash
-$ kubectl run guestbook --image=ibmcom/guestbook:v1
+$ kubectl create deployment guestbook --image=ibmcom/guestbook:v1
 $ kubectl expose deployment guestbook --type="NodePort" --port=3000
 ```
 
