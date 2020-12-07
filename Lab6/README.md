@@ -252,7 +252,7 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
 確認したあとで「http://<パブリックIPアドレス>:30001」でアクセスすれば、再びサンプルのアプリケーションにアクセスできます。
 
   ```bash
-  $ ibmcloud ks workers mycluster
+  $ ibmcloud ks workers --cluster mycluster
   OK
   ID                         パブリック IP     プライベート IP   マシン・タイプ   状態     状況    ゾーン   バージョン
   kube-hou02-xxxxxxxxxx-w1   184.xxx.x.xx    10.76.194.59    free             normal   Ready   hou02    1.10.12_1543
