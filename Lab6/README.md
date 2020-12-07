@@ -413,5 +413,5 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
 $ helm uninstall sample
 
 2) ハンズオンが終わったらクラスターを削除します
-$ ibmcloud ks cluster-rm <クラスター名>
+$ ibmcloud ks cluster rm --cluster <クラスター名>
 ```
