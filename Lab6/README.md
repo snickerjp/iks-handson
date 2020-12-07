@@ -26,16 +26,16 @@ Helmの公式サイトにチャート開発のためのドキュメントがま�
   $ helm create mychart
   Creating mychart
   ```
-   
+
 できあがるディレクトリの構造は以下の通りです:
-   
+
   ```bash
   mychart
   ├── Chart.yaml                     # チャートの情報を含むyaml
   ├── charts                         # このチャートが依存するチャートを格納するディレクトリー
   ├── templates                      # マニフェストのテンプレートを格納するディレクトリー
   │   ├── NOTES.txt                  # OPTIONAL: チャートの使用方法を記載したプレーンテキスト
-  │   ├── _helpers.tpl               # 
+  │   ├── _helpers.tpl               #
   │   ├── deployment.yaml            # deployment作成用のyaml
   │   ├── ingress.yaml               # Ingress設定用のyaml
   │   ├── service.yaml               # サービス作成用のyaml
@@ -49,7 +49,7 @@ Helmの公式サイトにチャート開発のためのドキュメントがま�
 Go Template言語で環境により異なる値が記載されています
 
   ```bash
-  $ cat mychart/templates/deployment.yaml 
+  $ cat mychart/templates/deployment.yaml
   apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -86,7 +86,7 @@ Go Template言語で環境により異なる値が記載されています
 以下の設定の場合、例えばvalues.yamlにあるreplicaCountという設定項目が上記のdeployment.ymlのレプリカ数を指定する項目(spec.replicas)に反映されます。
 
   ```
-  $ cat mychart/values.yaml 
+  $ cat mychart/values.yaml
   # Default values for mychart.
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
@@ -175,7 +175,7 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
 設定している内容はservice.typeがNodePortだった場合にNodePortのPortを指定ように記載しています
 
   ```bash
-  $ cat mychart/templates/service.yaml 
+  $ cat mychart/templates/service.yaml
   apiVersion: v1
   kind: Service
   metadata:
@@ -195,7 +195,7 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
     selector:
       {{- include "mychart.selectorLabels" . | nindent 4 }}
   ```
-  
+
 変更したらテンプレートの記載が正しいかのチェックを行います。「helm lint <helmチャートのディレクトリ>」を実行します。
 
   ```bash
@@ -205,7 +205,7 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
 
   1 chart(s) linted, 0 chart(s) failed
   ```
-   
+
 次に設定した値を変更していきましょう。
 デフォルト値が定義されているvalue.yamlをコピーします。
 
@@ -222,7 +222,7 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
       port: 80
     ```
 
-  * 変更後   
+  * 変更後
     ```
     service:
       type: NodePort
@@ -247,17 +247,17 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
     export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
     echo http://$NODE_IP:$NODE_PORT
   ```
-  
+
 今度は実際にNodePortでアクセスしてみましょう。「ibmcloud ks workers <クラスター名>」を実行し、パブリックIPアドレスを確認します。
 確認したあとで「http://<パブリックIPアドレス>:30001」でアクセスすれば、再びサンプルのアプリケーションにアクセスできます。
 
   ```bash
   $ ibmcloud ks workers mycluster
   OK
-  ID                         パブリック IP     プライベート IP   マシン・タイプ   状態     状況    ゾーン   バージョン   
-  kube-hou02-xxxxxxxxxx-w1   184.xxx.x.xx    10.76.194.59    free             normal   Ready   hou02    1.10.12_1543 
+  ID                         パブリック IP     プライベート IP   マシン・タイプ   状態     状況    ゾーン   バージョン
+  kube-hou02-xxxxxxxxxx-w1   184.xxx.x.xx    10.76.194.59    free             normal   Ready   hou02    1.10.12_1543
   ```
- 
+
 ## リソースを追加する
 新しくConfig Mapを作成し、アプリケーションに反映させてみましょう。
 今回の例ではConfig Mapとしてnginxのindex.htmlのテンプレートを登録し、表示されるメッセージをhelmチャートのValueで変更できるようにします。
@@ -282,13 +282,13 @@ templates/service.yamlのspec.ports以下のnameの後に同じインデント�
 
    ```bash
    # 以下 mychart/templates/index-configmap.yamlの内容
-   
+
    apiVersion: v1
    kind: ConfigMap
    metadata:
-     name: index-config 
+     name: index-config
    data:
-     index-config: index.html 
+     index-config: index.html
      index.html: |
        <!DOCTYPE html>
        <html>
