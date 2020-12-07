@@ -84,7 +84,7 @@ K8sは，アプリケーションを新しいバージョンのコンテナイ�
 
 いままでは， `v1` タグが付与されたイメージを使用していました。
 
-`$ kubectl run guestbook --image=ibmcom/guestbook:v1`
+`$ kubectl create deployment guestbook --image=ibmcom/guestbook:v1`
 
 新しいバージョンの`v2`のコンテナイメージにアップデートしてみましょう。また、`v2`に変更した後再度`v1`に切り戻すロールバックも実施します。
 
