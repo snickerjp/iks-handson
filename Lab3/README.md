@@ -21,7 +21,7 @@ Lab 3では大きく以下の2つを体験します。
 ```bash
 マニフェストファイルが用意されているリポジトリのクローンとディレクトリ移動
 
-$ git clone https://github.com/cloud-handson/guestbook.git
+$ git clone https://github.com/ibm-cloud-labs/guestbook.git
 $ cd guestbook/v1
 ```
 
